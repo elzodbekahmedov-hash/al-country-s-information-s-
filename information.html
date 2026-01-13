@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Informations</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <!-- navbar -->
+    <div
+      class="navbar bg-base-100 shadow-2xl mt-4 w-300 m-w-300 ml-auto mr-auto"
+    >
+      <a class="btn btn-ghost text-xl">Information about cars</a>
+    </div>
+    <template class="" id="ui_template">
+      <div
+        class="flex flex-col justify-center pl-10 mt-20 border bg-transparent border-stone-700 w-75 m-w-75 ml-auto mr-auto gap-3 hover:border-none hover:bg-gray-700 rounded-md"
+      >
+        <div class="flex">
+          <span class="text-yellow-700 font-bold">Name:&nbsp &nbsp</span>
+          <h2 class="js-data-name"></h2>
+        </div>
+        <div class="flex">
+          <span class="text-yellow-700 font-bold">Trim:&nbsp &nbsp</span>
+          <p class="trim"></p>
+        </div>
+        <div class="flex">
+          <span class="text-yellow-700 font-bold">Generation:&nbsp &nbsp</span>
+          <p class="generation"></p>
+        </div>
+        <div class="flex">
+          <span class="text-yellow-700 font-bold">Year:&nbsp</span>
+          <p class="year"></p>
+        </div>
+        <div class="flex">
+          <span class="text-yellow-700 font-bold"> Colorname:&nbsp &nbsp</span>
+          <p class="colorName"></p>
+        </div>
+        <div class="flex">
+          <span class="text-yellow-700 font-bold">Category:&nbsp &nbsp</span>
+          <p class="category"></p>
+        </div>
+        <div class="flex">
+          <span class="text-yellow-700 font-bold">Door Count:&nbsp &nbsp</span>
+          <p class="doorCount"></p>
+        </div>
+        <div class="flex">
+          <span class="text-yellow-700 font-bold">Seat count:&nbsp &nbsp</span>
+          <p class="seatCount"></p>
+        </div>
+        <div class="flex">
+          <span class="text-yellow-700 font-bold">Max Speed:&nbsp &nbsp</span>
+          <p class="maxSpeed"></p>
+        </div>
+        <div class="flex">
+          <span class="text-yellow-700 font-bold"
+            >Acceleration:&nbsp &nbsp</span
+          >
+          <p class="acceleration"></p>
+        </div>
+        <div class="flex">
+          <span class="text-yellow-700 font-bold">Engine:&nbsp &nbsp</span>
+          <p class="engine"></p>
+        </div>
+        <div class="flex">
+          <span class="text-yellow-700 font-bold">Horse Power:&nbsp &nbsp</span>
+          <p class="horsePower"></p>
+        </div>
+        <div class="flex">
+          <span class="text-yellow-700 font-bold">Fuel Type:&nbsp &nbsp</span>
+          <p class="fuelType"></p>
+        </div>
+      </div>
+    </template>
+
+    <!-- Back button -->
+    <div class="tooltip flex fixed mt-10 ml-8" data-tip="Home page">
+      <a href="/index.html"
+        ><button class="p-4 pl-6 pr-6 bg-blue-600 rounded-md">
+          <span class="pr-1">←</span>Orqaga
+        </button></a
+      >
+    </div>
+
+    <div class="js-details-box"></div>
+
+    <script src="detail.js"></script>
+  </body>
+</html>
