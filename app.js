@@ -101,7 +101,23 @@ elPrev.addEventListener("click", (evt) => {
 });
 req();
 
+
 elCarAddForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+})
+document.querySelector("#addSubmit").addEventListener("click",()=>{
+  let emptyInputs=[];
+  elCarAddForm.querySelectorAll("input, textarea")
+  .forEach(el=>{
+    if(el.value.trim()=='') {
+      emptyInputs.push(el.name)
+    }
+  })
+  if(emptyInputs.length!=0) {
+    elCarAddForm.querySelector(`[name="${emptyInputs[0]}"]`).focus();
+  }
+  else if(emptyInputs.length==0) { 
+  elCarAddForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const formData = new FormData(elCarAddForm);
   let result = {};
@@ -118,5 +134,6 @@ elCarAddForm.addEventListener("submit", (evt) => {
     }, 1000
   );
   }
-  console.log(result);
 });
+  }
+})
