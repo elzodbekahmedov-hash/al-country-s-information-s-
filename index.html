@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,7 +6,7 @@
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="/img/favicon-32x32.png"
+      href="./img/free-icon-car-2330453 (1).png"
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,59 +15,23 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body>
+  <body class="overflow-x-hidden bg-orange-100" >
     <!-- Navbar -->
-    <div><div class="navbar bg-base-100 shadow-sm">
-  <div class="flex-none">
-    <button class="btn btn-square btn-ghost o">
-      <img src="https://avatars.mds.yandex.net/i?id=a567e76f018783bfaa8d415dc3fa130063d56ed8-8309375-images-thumbs&n=13" alt="luxury cars brand">
-    </button>
-  </div>
-  <div class="flex-1">
-    <a class="btn btn-ghost text-xl">Top cars information</a>
-  </div>
-  <div class="flex-none">
-    <button class="btn btn-square btn-ghost">
-      <!-- modal -->
-<button class="btn" onclick="my_modal_3.showModal()">open modal</button>
-<dialog id="my_modal_3" class="modal">
-  <div class="modal-box">
-    <form method="dialog">
-      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-    </form>
-    <h3 class="text-lg font-bold">CREATE OWN LUXURY CARS!</h3>
-    <p class="py-4">Please Enter Cars Elements
-       <button><label class="swap swap-flip text-5xl">
-  <!-- this hidden checkbox controls the state -->
-  <input type="checkbox" />
-
-  <div class="swap-on">😈</div>
-  <div class="swap-off">😇</div>
-   </label>
-    </button>
-     </p>
-    <div>
-  <input type="text" placeholder="car name " class="input input-neutral " />
-<input type="text" placeholder="years" class="input input-primary" />
-<input type="text" placeholder="speed" class="input input-secondary" />
-<input type="text" placeholder="hourse power" class="input input-accent" />
-
-<input type="text" placeholder="Accleration" class="input input-info" />
-<input type="text" placeholder="yoqilg'i sarifi" class="input input-success" />
-<input type="text" placeholder="country" class="input input-warning" /></div>
-<div><button class="btn btn-active">Edit ✍️</button>
-<button class="btn btn-active btn-success">confirm✅</button></div>
-
-  </div>
-</dialog>
-    </button>
-  </div>
-</div>
+    <div
+      class="navbar bg-base-100 shadow-2xl mt-4 w-full mx-auto flex justify-between pr-4"
+    >
+      <a class="btn btn-ghost text-xl">Cars Information</a>
+      <!-- You can open the modal using ID.showModal() method -->
+      <div class="flex justify-end">
+        <button class="btn btn-info" onclick="my_modal_3.showModal()">
+          Create 
+        </button>
+      </div>
     </div>
 
     <!-- Container  -->
     <div
-      class="grid grid-cols-3 gap-6 w-275 m-w-275 ml-auto mr-auto justify-center items-center"
+      class="grid grid-cols-3 gap-6 w-full mx-auto justify-center items-center"
       id="container"
     ></div>
 
@@ -76,9 +41,9 @@
     <!-- Template fragment -->
     <template id="templateCard">
       <div
-        class="card bg-base-100 shadow-sm w-62.5 m-w-62.5 mr-auto ml-auto mt-10 hover:shadow-stone-700"
+        class="card bg-base-100 shadow-sm w-full mx-auto mt-10 hover:shadow-stone-700"
       >
-        
+       
         <div class="card-body">
           <h2 class="card-title"></h2>
           <p></p>
@@ -135,6 +100,15 @@
         </div>
       </div>
     </template>
+
+    <!-- Toast -->
+
+    <template id="toastTemplate">
+      <div role="alert" class="alert alert-error alert-soft z-10!">
+        <span>Error! Task failed successfully.</span>
+      </div>
+    </template>
+    <div class="fixed top-10 right-10 flex flex-col gap-2 z-10! " id="toast"></div>
     <!-- buttons Prev & Next -->
     <div
       class="gap-10 pl-4 pt-4 justify-center mt-5 mb-5 hidden"
@@ -142,7 +116,7 @@
     >
       <div class="tooltip flex" data-tip="back ">
         <button
-          class="btn-info bg-blue-600 p-2 pr-4 pl-4 rounded-md cursor-pointer hover:bg-gray-600 hover:color-white hidden  hover:text-white"
+          class="btn-info bg-blue-500 p-2 pr-4 pl-4 rounded-md cursor-pointer hover:bg-gray-600 hover:color-white hidden"
           id="prev"
         >
           <span>⏪</span>Prev
@@ -150,14 +124,122 @@
       </div>
       <div class="tooltip flex" data-tip="next page">
         <button
-          class="btn-info bg-blue-600 p-2 pr-4 pl-4 rounded-md cursor-pointer hover:bg-gray-600 hover:color-white hover:text-color-white"
+          class="btn-info bg-blue-500 p-2 pr-4 pl-4 rounded-md cursor-pointer hover:bg-gray-600 hover:color-white"
           id="next"
         >
           Next <span>⏩</span>
         </button>
       </div>
     </div>
-    
+
+    <!-- Modal -->
+    <dialog id="my_modal_3" class="modal">
+      <div class="modal-box bg-orange-100">
+        <form method="dialog">
+          <button
+            class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+          >
+            ✕
+          </button>
+        </form>
+        <h3 class="text-lg font-bold">Enter new</h3>
+        <p class="py-4">Enter cars information!</p>
+        <form class="flex flex-col gap-y-2" id="carAddForm">
+          <!-- eski input dizaynida biz oz rang baranglik ko'pliki sababli sarvarbek ustoz tavsiyasiga binoan ozgartirildi  -->
+          <input
+            type="text"
+            placeholder="enter car name "
+            class="input"
+            id="js-car-name"
+            name="car model"
+          />
+          <input
+            type="number"
+            max="2026"
+            min="1970"
+            placeholder="year of manufacture"
+            class="input"
+            id="js-car-year"
+            name="years"
+          />
+          <div class="flex gap-1">
+            <h3>Rang:</h3>
+            <input
+              type="color"
+              placeholder="enter car's color "
+              id="js-car-color"
+              name="color"
+            />
+          </div>
+          <label class="input">
+            <input
+              type="number"
+              placeholder="enter speed"
+              id="js-car-speed"
+              name="maxSpeed"
+              max="550"
+              min="120"
+            />
+            km/s
+          </label>
+          <input
+            type="number"
+            max="1500"
+            min="40"
+            placeholder="enter hourse power"
+            class="input"
+            id="js-car-horsePower"
+            name="horsepower"
+          />
+          <input
+            type="text"
+            placeholder="enter geration"
+            class="input"
+            id="js-car-generation"
+            name="generation"
+          />
+          <input
+            type="text"
+            placeholder="enter car type"
+            class="input"
+            id="js-car-category"
+            name="category"
+          />
+          <input
+            type="number"
+            placeholder="enter cars doors"
+            class="input"
+            id="js-car-doorCount"
+            name="doorCount"
+          />
+          <input
+            type="number"
+            placeholder="enter accleration 0-100 ?sek"
+            class="input"
+            id="js-car-acceleration"
+            name="acceleration"
+          />
+          <input
+            type="text"
+            placeholder="fuel consumption "
+            class="input"
+            id="js-car-fuelType"
+            name="fuelType"
+          />
+          <input
+            type="text"
+            placeholder="enter car's country "
+            class="input"
+            id="js-car-country"
+            name="country"
+          />
+          <button value="submit" class="w-full btn mt-2 hover:bg-blue-300" id="addSubmit">
+            confirm✅
+          </button>
+        </form>
+      </div>
+    </dialog>
+
     <script src="./app.js"></script>
   </body>
 </html>

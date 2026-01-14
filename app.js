@@ -6,6 +6,10 @@ let elDelete = document.getElementById("deleteCard");
 let elPrev = document.getElementById("prev");
 let elNext = document.getElementById("next");
 let elPagenation = document.getElementById("pagenation");
+let elSubmit = document.getElementById("addSubmit");
+let elToastTemplate = document.getElementById("toastTemplate");
+let elToast = document.getElementById("toast");
+let elCarAddForm = document.getElementById("carAddForm");
 
 let limit = 3;
 let skip = 0;
@@ -20,9 +24,7 @@ function req() {
     .then((res) => {
       ui(res.data);
     })
-    // .catch(() => {
-    //   console.log("xatolik");
-    // })
+    
     .finally(() => {
       loader(false);
     });
@@ -55,7 +57,8 @@ function ui(data) {
     clone.getElementById("generation").innerText = element.generation;
     clone.getElementById("year").innerText = element.year;
     clone.querySelector("#delBtn").id = element.id;
-    clone.querySelector(".js-data-link").href=location.origin+"/information.html?id="+element.id
+    clone.querySelector(".js-data-link").href =
+      location.origin + "/information.html?id=" + element.id;
     elContainer.appendChild(clone);
   });
 }
@@ -97,3 +100,23 @@ elPrev.addEventListener("click", (evt) => {
   req();
 });
 req();
+
+elCarAddForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const formData = new FormData(elCarAddForm);
+  let result = {};
+  formData.forEach((value, key) => {
+    result[key] = value;
+    result.value=""
+  });
+  if (result.value === "") {
+    const clone = elToastTemplate.cloneNode(true).content;
+    clone.querySelector("span").innerText = "Bo'sh joyni to'ldiring";
+    elToast.appendChild(clone);
+    setTimeout(() => {
+      document.querySelector(`[role="alert"]`).remove()
+    }, 1000
+  );
+  }
+  console.log(result);
+});
