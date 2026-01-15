@@ -115,25 +115,24 @@ document.querySelector("#addSubmit").addEventListener("click",()=>{
   })
   if(emptyInputs.length!=0) {
     elCarAddForm.querySelector(`[name="${emptyInputs[0]}"]`).focus();
-  }
-  else if(emptyInputs.length==0) { 
-  elCarAddForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const formData = new FormData(elCarAddForm);
-  let result = {};
-  formData.forEach((value, key) => {
-    result[key] = value;
-    result.value=""
-  });
-  if (result.value === "") {
-    const clone = elToastTemplate.cloneNode(true).content;
-    clone.querySelector("span").innerText = "Bo'sh joyni to'ldiring";
+    let clone = elToastTemplate.cloneNode(true).content;
+    clone.querySelector("span").innerText = `${emptyInputs[0].slice(0,1).toUpperCase() + emptyInputs[0].slice(1) } joyni to'ldiring`;
     elToast.appendChild(clone);
     setTimeout(() => {
       document.querySelector(`[role="alert"]`).remove()
     }, 1000
   );
   }
+  else if(emptyInputs.length==0) { 
+  elCarAddForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const formData = new FormData(elCarAddForm)  
+  let result = {};
+  formData.forEach((value, key) => {
+    result[key] = value;
+    result.value=""
+  });
+
 });
   }
 })
