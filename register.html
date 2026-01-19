@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    
+    <video autoplay muted loop playsinline  class="absolute inset-0 w-full h-full object-cover z-0">
+  <source src="./bg-video/bg.mp4" type="video/mp4" >
+</video>
+    <div
+  class="card w-full max-w-sm
+         bg-white/5 backdrop-blur-md
+         border border-white/20
+         shadow-2xl rounded-2xl ml-145 mt-50">
+ 
+     <div class="card-body         flex justify center
+         items center ">
+    <form id="loginform">
+      <label class="label text-white ">Login</label>
+      <input
+        type="text"
+        class="input bg-white/70 text-black"
+        placeholder="login"
+        name="username"
+      />
+
+      <label class="label text-white">Password</label>
+      <input
+        type="password"
+        class="input bg-white/70 text-black"
+        placeholder="Password"
+        name="password"
+      />
+
+      <button class="btn btn-neutral mt-4 w-full">
+        Login
+      </button>
+    </form>
+  </div>
+</div>
+
+
+    <script src="./register.js" type="module"></script>
+
+  </body>
+</html>

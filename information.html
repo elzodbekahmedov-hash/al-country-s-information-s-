@@ -9,6 +9,10 @@
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
+    <video autoplay muted loop playsinline  class="absolute inset-0 w-full h-full object-cover z-0">
+  <source src="./bg-video/bg.mp4" type="video/mp4" >
+</video>
+
     <!-- navbar -->
     <div
       class="navbar bg-base-100 shadow-2xl mt-4 w-300 m-w-300 ml-auto mr-auto"
@@ -19,6 +23,11 @@
       <div
         class="flex flex-col justify-center pl-10 mt-20 border bg-transparent border-stone-700 w-75 m-w-75 ml-auto mr-auto gap-3 hover:border-none hover:bg-blue-100 rounded-md"
       >
+      <div class="card  
+         bg-white/0 backdrop-blur-md
+         border border-white/10
+         shadow-2xl rounded-2xl ml-145 mt-50 
+         display-flex items-center justyfy-center">
         <div class="flex">
           <span class="text-yellow-700 font-bold">Name:&nbsp &nbsp</span>
           <h2 class="js-data-name"></h2>
@@ -74,6 +83,7 @@
           <p class="fuelType"></p>
         </div>
       </div>
+      </div>
     </template>
 
     <!-- Back button -->
@@ -87,6 +97,6 @@
 
     <div class="js-details-box"></div>
 
-    <script src="detail.js"></script>
+    <script src="./detail.js"></script>
   </body>
 </html>

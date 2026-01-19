@@ -9,25 +9,31 @@
       href="./img/free-icon-car-2330453 (1).png"
     />
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>CRUD</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body class="overflow-x-hidden bg-orange-100" >
+  <body class="overflow-x-hidden ">
     <!-- Navbar -->
-    <div
-      class="navbar bg-base-100 shadow-2xl mt-4 w-full mx-auto flex justify-between pr-4"
-    >
-      <a class="btn btn-ghost text-xl">Cars Information</a>
-      <!-- You can open the modal using ID.showModal() method -->
-      <div class="flex justify-end">
-        <button class="btn btn-info" onclick="my_modal_3.showModal()">
-          Create 
+    <div class="navbar bg-base-100 shadow-2xl mt-4 w-full mx-auto flex justify-between pr-4">
+      <a class="btn btn-ghost text-xl">Avto E'lon Uz</a>
+      <div class="flex gap-3">
+        <div class="flex justify-end">
+          <button class="btn btn-info js-add-button" >
+            Create
+          </button>
+     
         </button>
+        </div>
+        <div class="">
+          <button class="btn dark__mode">🌙 Dark</button>
+          <button class="btn hidden light__mode">☀️ Light</button>
+        </div>
       </div>
     </div>
+
 
     <!-- Container  -->
     <div
@@ -56,6 +62,24 @@
                   ><button class="btn btn-info text-white">More</button></a
                 >
               </div>
+              <div class="tooltip" data-tip="Edit">
+              <button class="btn btn-accent js-edit-button" id="editBtn">
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11.8536 1.14645C11.6583 0.951184 11.3417 0.951184 11.1465 1.14645L3.71455 8.57836C3.62459 8.66832 3.55263 8.77461 3.50251 8.89155L2.04044 12.303C1.9599 12.491 2.00189 12.709 2.14646 12.8536C2.29103 12.9981 2.50905 13.0401 2.69697 12.9596L6.10847 11.4975C6.2254 11.4474 6.3317 11.3754 6.42166 11.2855L13.8536 3.85355C14.0488 3.65829 14.0488 3.34171 13.8536 3.14645L11.8536 1.14645ZM4.42166 9.28547L11.5 2.20711L12.7929 3.5L5.71455 10.5784L4.21924 11.2192L3.78081 10.7808L4.42166 9.28547Z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+            </div>
               <div class="tooltip flex" data-tip="Delete">
                 <button class="btn btn-error js-delete-button" id="delBtn">
                   <svg
@@ -133,15 +157,114 @@
     </div>
 
     <!-- Modal -->
+     <dialog id="editModal" class="modal">
+      <div class="modal-box">
+        <form method="dialog">
+          <button
+            class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            ✕
+          </button>
+        </form> 
+        <h3 class="text-lg font-bold">Enter new</h3>
+        <p class="py-4">Enter cars information!</p>
+        <form class="flex flex-col gap-y-2" id="carEditForm">
+          <input
+            type="text"
+            placeholder="enter car name "
+            class="input"
+            id="js-car-name"
+            name="name"
+          />
+          <input
+            type="number"
+            max="2026"
+            min="1970"
+            placeholder="year of manufacture"
+            class="input"
+            id="js-car-year"
+            name="years"
+          />
+          <div class="flex gap-1">
+            <h3>Rang:</h3>
+            <input
+              type="color"
+              placeholder="enter car's color "
+              id="js-car-color"
+              name="color"
+            />
+          </div>
+          <label class="input">
+            <input
+              type="number"
+              placeholder="enter speed"
+              id="js-car-speed"
+              name="maxSpeed"
+              max="550"
+              min="120"
+            />
+            km/s
+          </label>
+          <input
+            type="number"
+            max="1500"
+            min="40"
+            placeholder="enter hourse power"
+            class="input"
+            id="js-car-horsePower"
+            name="horsepower"
+          />
+          <input
+            type="text"
+            placeholder="enter geration"
+            class="input"
+            id="js-car-generation"
+            name="generation"
+          />
+          <input
+            type="text"
+            placeholder="enter car type"
+            class="input"
+            id="js-car-category"
+            name="category"
+          />
+          <input
+            type="number"
+            placeholder="enter cars doors"
+            class="input"
+            id="js-car-doorCount"
+            name="doorCount"
+          />
+          <input
+            type="number"
+            placeholder="enter accleration 0-100 ?sek"
+            class="input"
+            id="js-car-acceleration"
+            name="acceleration"
+          />
+          <input
+            type="text"
+            placeholder="fuel consumption "
+            class="input"
+            id="js-car-fuelType"
+            name="fuelType"
+          />
+          <input
+            type="text"
+            placeholder="enter car's country "
+            class="input"
+            id="js-car-country"
+            name="country"
+          />
+             <button class="btn w-full" id="submitButton">Submit✅</button>
+        </form>
+        </div>
+        </dialog>
     <dialog id="my_modal_3" class="modal">
       <div class="modal-box bg-orange-100">
         <form method="dialog">
-          <button
-            class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-          >
-            ✕
-          </button>
-        </form>
+          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" >✕</button>
+           </form>   
+      
         <h3 class="text-lg font-bold">Enter new</h3>
         <p class="py-4">Enter cars information!</p>
         <form class="flex flex-col gap-y-2" id="carAddForm">
@@ -241,5 +364,6 @@
     </dialog>
 
     <script src="./app.js"></script>
+    <script src="/mode.js"></script>
   </body>
 </html>
