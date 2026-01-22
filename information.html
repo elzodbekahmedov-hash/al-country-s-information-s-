@@ -1,102 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Informations</title>
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Information</title>
+    <link rel="stylesheet" href="./css/output.css" />
   </head>
   <body>
-    <video autoplay muted loop playsinline  class="absolute inset-0 w-full h-full object-cover z-0">
-  <source src="./bg-video/bg.mp4" type="video/mp4" >
-</video>
-
-    <!-- navbar -->
-    <div
-      class="navbar bg-base-100 shadow-2xl mt-4 w-300 m-w-300 ml-auto mr-auto"
-    >
-      <a class="btn btn-ghost text-xl">Information about cars</a>
-    </div>
-    <template class="" id="ui_template">
+    <!-- Navbar -->
+    <div class="flex justify-center">
       <div
-        class="flex flex-col justify-center pl-10 mt-20 border bg-transparent border-stone-700 w-75 m-w-75 ml-auto mr-auto gap-3 hover:border-none hover:bg-blue-100 rounded-md"
+        class="navbar bg-base-100 shadow-sm flex justify-between w-100 mx-auto mt-6 sm:w-150 md:w-190 xl:250 lg:w-300"
       >
-      <div class="card  
-         bg-white/0 backdrop-blur-md
-         border border-white/10
-         shadow-2xl rounded-2xl ml-145 mt-50 
-         display-flex items-center justyfy-center">
-        <div class="flex">
-          <span class="text-yellow-700 font-bold">Name:&nbsp &nbsp</span>
-          <h2 class="js-data-name"></h2>
-        </div>
-        <div class="flex">
-          <span class="text-yellow-700 font-bold">Trim:&nbsp &nbsp</span>
-          <p class="trim">Inscription</p>
-        </div>
-        <div class="flex">
-          <span class="text-yellow-700 font-bold">Generation:&nbsp &nbsp</span>
-          <p class="generation">ikkinchi</p>
-        </div>
-        <div class="flex">
-          <span class="text-yellow-700 font-bold">Year:&nbsp</span>
-          <p class="year">2022</p>
-        </div>
-        <div class="flex">
-          <span class="text-yellow-700 font-bold"> Colorname:&nbsp &nbsp</span>
-          <p class="colorName"></p>
-        </div>
-        <div class="flex">
-          <span class="text-yellow-700 font-bold">Category:&nbsp &nbsp</span>
-          <p class="category"></p>
-        </div>
-        <div class="flex">
-          <span class="text-yellow-700 font-bold">Door Count:&nbsp &nbsp</span>
-          <p class="doorCount"></p>
-        </div>
-        <div class="flex">
-          <span class="text-yellow-700 font-bold">Seat count:&nbsp &nbsp</span>
-          <p class="seatCount"></p>
-        </div>
-        <div class="flex">
-          <span class="text-yellow-700 font-bold">Max Speed:&nbsp &nbsp</span>
-          <p class="maxSpeed"></p>
-        </div>
-        <div class="flex">
-          <span class="text-yellow-700 font-bold"
-            >Acceleration:&nbsp &nbsp</span
-          >
-          <p class="acceleration"></p>
-        </div>
-        <div class="flex">
-          <span class="text-yellow-700 font-bold">Engine:&nbsp &nbsp</span>
-          <p class="engine"></p>
-        </div>
-        <div class="flex">
-          <span class="text-yellow-700 font-bold">Horse Power:&nbsp &nbsp</span>
-          <p class="horsePower"></p>
-        </div>
-        <div class="flex">
-          <span class="text-yellow-700 font-bold">Fuel Type:&nbsp &nbsp</span>
-          <p class="fuelType"></p>
+        <div><a class="btn btn-ghost text-xl">Where in the world?</a></div>
+
+        <!-- light & dark mode  -->
+        <div class="pr-5">
+          <button class="btn dark__mode" style="width:100px; height:50px;"><img style="width: 100%; height:100%;" src="./img/icons8-light-on-100.png" alt=""></button>
+          <button class="btn hidden light__mode" style="width:100px; height:50px;"><img style="width: 100%; height:100%;" src="./img/icons8-light-100.png" alt=""></button>
         </div>
       </div>
+    </div>
+    <!-- Back button -->
+    <div class="tooltip ml-10 mt-10" data-tip="Back to Main">
+      <a href="./index.html"
+        ><button class="btn"><span>← &nbsp;</span>Back</button></a
+      >
+    </div>
+    <!--  information -->
+    <div id="infoBox"></div>
+
+    <!-- Template card -->
+    <template id="infoTemplate">
+      <div
+        class="flex justify-center flex-col items-center mb-10 gap-20 mt-10 md:flex-row"
+      >
+        <div>
+          <img class="rounded-2xl" width="560px" height="401px" src="" alt="" />
+        </div>
+
+        <div class="flex flex-col gap-2 justify-center">
+          <h2 class="name font-bold text-4xl pb-8"></h2>
+          <div class="flex">
+            <span class="not-dark:text-gray-900 font-bold"
+              >Native name:&nbsp;</span
+            >
+            <p class="nativeName not-dark:text-gray-700"></p>
+          </div>
+          <div class="flex">
+            <span class="not-dark:text-gray-900 font-bold"
+              >Population:&nbsp;&nbsp;</span
+            >
+            <p class="population not-dark:text-gray-700"></p>
+          </div>
+          <div class="flex">
+            <span class="not-dark:text-gray-900 font-bold"
+              >Region:&nbsp;&nbsp;</span
+            >
+            <p class="region not-dark:text-gray-700"></p>
+          </div>
+          <div class="flex">
+            <span class="not-dark:text-gray-900 font-bold"
+              >Sub region:&nbsp;&nbsp;</span
+            >
+            <p class="subRegion not-dark:text-gray-700"></p>
+          </div>
+          <div class="flex">
+            <span class="not-dark:text-gray-900 font-bold"
+              >Capital:&nbsp;&nbsp;</span
+            >
+            <p class="capital not-dark:text-gray-700"></p>
+          </div>
+          <div class="flex">
+            <span class="not-dark:text-gray-900 font-bold"
+              >Top Level Domain: &nbsp;&nbsp;</span
+            >
+            <p class="tld not-dark:text-gray-700"></p>
+          </div>
+
+          <div class="flex">
+            <span class="not-dark:text-gray-900 font-bold"
+              >Languages: &nbsp;&nbsp;</span
+            >
+            <p class="languages not-dark:text-gray-700"></p>
+          </div>
+        </div>
       </div>
     </template>
-
-    <!-- Back button -->
-    <div class="tooltip flex fixed mt-10 ml-8" data-tip="Home page">
-      <a href="/index.html"
-        ><button class="p-4 pl-6 pr-6 bg-blue-200 rounded-md">
-          <span class="pr-1">←</span>Back
-        </button></a
-      >
-    </div>
-
-    <div class="js-details-box"></div>
-
-    <script src="./detail.js"></script>
+    <!-- skeleton div -->
+    <div id="loaderInfo"></div>
+    <!-- Template skeleton -->
+    <template id="tempInoSkeleton">
+      <div class="flex justify-center gap-10 mt-20">
+        <div class="flex flex-col gap-2 justify-center"></div>
+      </div>
+    </template>
+    <script type="module" src="./js/mode.js"></script>
+    <script type="module" src="./js/detail.js"></script>
   </body>
 </html>

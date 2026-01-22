@@ -1,369 +1,96 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
   <head>
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./img/free-icon-car-2330453 (1).png"
-    />
+    
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>CRUD</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rest Countryies</title>
+    <link rel="stylesheet" href="./css/output.css" />
   </head>
-  <body class="overflow-x-hidden ">
+  <body class="overflow-x-hidden">
     <!-- Navbar -->
-    <div class="navbar bg-base-100 shadow-2xl mt-4 w-full mx-auto flex justify-between pr-4">
-      <a class="btn btn-ghost text-xl">Avto E'lon Uz</a>
-      <div class="flex gap-3">
-        <div class="flex justify-end">
-          <button class="btn btn-info js-add-button" >
-            Create
-          </button>
-     
-        </button>
-        </div>
-        <div class="">
-          <button class="btn dark__mode">🌙 Dark</button>
-          <button class="btn hidden light__mode">☀️ Light</button>
+    <div class="flex justify-center">
+      <div
+        class="navbar bg-base-100 shadow-sm flex justify-between w-1500 mx-auto mt-6 sm:w-150 md:w-190 xl:250 lg:w-300"
+      >
+        <div><a class="btn btn-ghost text-xl">Where in the world?</a></div>
+
+        <!-- light , dark mode  -->
+        <div class="theme_toggler">
+          <button class="btn dark__mode" style="width:100px; height:50px;"><img style="width: 100%; height:100%;" src="./img/icons8-light-on-100.png" alt=""></button>
+          <button class="btn hidden light__mode" style="width:100px; height:50px;"><img style="width: 100%; height:100%;" src="./img/icons8-light-100.png" alt=""></button>
         </div>
       </div>
     </div>
 
-
-    <!-- Container  -->
     <div
-      class="grid grid-cols-3 gap-6 w-full mx-auto justify-center items-center"
-      id="container"
-    ></div>
+      class="flex w-90 mx-auto mt-10 flex-col gap-4 sm:w-140 sm:flex-row md:w-180 justify-between xl:w-240 lg:w-290"
+    >
+      <label 
+        class="input w-50 not-dark:bg-gray-400 border-blue-800 sm:w-70"
+      >
+        <svg
+          class="h-[1em] opacity-50"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <g
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            stroke-width="2.5"
+            fill="none"
+            stroke="currentColor"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </g>
+        </svg>
+        <input type="search" required placeholder="Search" />
+      </label>
+      <select class="select not-dark:dark:bg-gray-200 w-50 sm:w-70">
+        <option disabled selected>Filter by region</option>
+        <option value="africa">Africa</option>
+        <option value="america">America</option>
+        <option value="asia">Asia</option>
+        <option value="europe">Europe</option>
+        <option value="oceania">Oceania</option>
+      </select>
+    </div>
+     <!--  Container -->
+    <main id="container" class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-10 mt-12 mx-auto max-w-7xl cursor-pointer"></main>
 
     <!-- Loader -->
-    <div class="grid grid-cols-3 gap-10" id="loader"></div>
+    <div id="loader" class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-10 mt-12 mx-auto max-w-7xl cursor-pointer"></div>
 
-    <!-- Template fragment -->
+    <!-- Card Template -->
     <template id="templateCard">
-      <div
-        class="card bg-base-100 shadow-sm w-full mx-auto mt-10 hover:shadow-stone-700"
-      >
-       
-        <div class="card-body">
-          <h2 class="card-title"></h2>
-          <p></p>
-          <p id="generation"></p>
-          <p id="year"></p>
-          <div class="card-actions justify-end">
-            <div class="flex gap-4">
-              <div class="tooltip flex" data-tip="More information">
-                <a href="#" class="js-data-link"
-                  ><button class="btn btn-info text-white">More</button></a
-                >
-              </div>
-              <div class="tooltip" data-tip="Edit">
-              <button class="btn btn-accent js-edit-button" id="editBtn">
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 15 15"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M11.8536 1.14645C11.6583 0.951184 11.3417 0.951184 11.1465 1.14645L3.71455 8.57836C3.62459 8.66832 3.55263 8.77461 3.50251 8.89155L2.04044 12.303C1.9599 12.491 2.00189 12.709 2.14646 12.8536C2.29103 12.9981 2.50905 13.0401 2.69697 12.9596L6.10847 11.4975C6.2254 11.4474 6.3317 11.3754 6.42166 11.2855L13.8536 3.85355C14.0488 3.65829 14.0488 3.34171 13.8536 3.14645L11.8536 1.14645ZM4.42166 9.28547L11.5 2.20711L12.7929 3.5L5.71455 10.5784L4.21924 11.2192L3.78081 10.7808L4.42166 9.28547Z"
-                    fill="currentColor"
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-              <div class="tooltip flex" data-tip="Delete">
-                <button class="btn btn-error js-delete-button" id="delBtn">
-                  <svg
-                    class="text-white pointer-events-none"
-                    width="15"
-                    height="15"
-                    viewBox="0 0 15 15"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M5.5 1C5.22386 1 5 1.22386 5 1.5C5 1.77614 5.22386 2 5.5 2H9.5C9.77614 2 10 1.77614 10 1.5C10 1.22386 9.77614 1 9.5 1H5.5ZM3 3.5C3 3.22386 3.22386 3 3.5 3H5H10H11.5C11.7761 3 12 3.22386 12 3.5C12 3.77614 11.7761 4 11.5 4H11V12C11 12.5523 10.5523 13 10 13H5C4.44772 13 4 12.5523 4 12V4L3.5 4C3.22386 4 3 3.77614 3 3.5ZM5 4H10V12H5V4Z"
-                      fill="currentColor"
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
+      <div class="tooltip" data-tip="MORE👇">
+        <div class="card bg-gray-500 shadow-sm w-full max-w-xs h-60 mx-auto border border-blue-500">
+          <figure><img src="" alt="Country Flag" class="w-full h-32 object-cover"/></figure>
+          <div class="card-body flex flex-col justify-center items-center">
+            <h2 class="name font-bold text-lg"></h2>
+            <div class="flex gap-1 pt-2"><span class="font-bold">Population:</span> <p class="population text-gray-600"></p></div>
+            <div class="flex gap-1"><span class="font-bold">Region:</span> <p class="region text-gray-600"></p></div>
+            <div class="flex gap-1"><span class="font-bold">Capital:</span> <p class="capital text-gray-600"></p></div>
           </div>
         </div>
       </div>
     </template>
 
-    <!-- skeleton -->
+    <!-- Skeleton Template -->
     <template id="templateSkeleton">
-      <div
-        class="card bg-base-100 shadow-sm w-62.5 m-w-62.5 mr-auto ml-auto mt-10"
-      >
-        <div class="card-body">
-          <div class="skeleton h-6.5 w-50.5"></div>
-          <div class="flex flex-col gap-2">
-            <div class="skeleton h-5 w-5"></div>
-            <div class="skeleton h-5 w-10"></div>
-            <div class="skeleton h-5 w-10"></div>
-          </div>
-          <div class="card-actions justify-end">
-            <div class="skeleton h-10 w-16.75"></div>
-            <div class="skeleton h-10 w-12"></div>
-          </div>
+      <div class="flex justify-center gap-10">
+        <div class="flex flex-col gap-4 items-center w-52">
+          <div class="skeleton h-44 w-66"></div>
+          <div class="skeleton h-5 w-full"></div>
+          <div class="skeleton h-5 w-full"></div>
+          <div class="skeleton h-5 w-full"></div>
+          <div class="skeleton h-1.5 w-full"></div>
         </div>
       </div>
     </template>
 
-    <!-- Toast -->
-
-    <template id="toastTemplate">
-      <div role="alert" class="alert alert-error alert-soft z-10!">
-        <span>Error! Task failed successfully.</span>
-      </div>
-    </template>
-    <div class="fixed top-10 right-10 flex flex-col gap-2 z-10! " id="toast"></div>
-    <!-- buttons Prev & Next -->
-    <div
-      class="gap-10 pl-4 pt-4 justify-center mt-5 mb-5 hidden"
-      id="pagenation"
-    >
-      <div class="tooltip flex" data-tip="back ">
-        <button
-          class="btn-info bg-blue-500 p-2 pr-4 pl-4 rounded-md cursor-pointer hover:bg-gray-600 hover:color-white hidden"
-          id="prev"
-        >
-          <span>⏪</span>Prev
-        </button>
-      </div>
-      <div class="tooltip flex" data-tip="next page">
-        <button
-          class="btn-info bg-blue-500 p-2 pr-4 pl-4 rounded-md cursor-pointer hover:bg-gray-600 hover:color-white"
-          id="next"
-        >
-          Next <span>⏩</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Modal -->
-     <dialog id="editModal" class="modal">
-      <div class="modal-box">
-        <form method="dialog">
-          <button
-            class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-            ✕
-          </button>
-        </form> 
-        <h3 class="text-lg font-bold">Enter new</h3>
-        <p class="py-4">Enter cars information!</p>
-        <form class="flex flex-col gap-y-2" id="carEditForm">
-          <input
-            type="text"
-            placeholder="enter car name "
-            class="input"
-            id="js-car-name"
-            name="name"
-          />
-          <input
-            type="number"
-            max="2026"
-            min="1970"
-            placeholder="year of manufacture"
-            class="input"
-            id="js-car-year"
-            name="years"
-          />
-          <div class="flex gap-1">
-            <h3>Rang:</h3>
-            <input
-              type="color"
-              placeholder="enter car's color "
-              id="js-car-color"
-              name="color"
-            />
-          </div>
-          <label class="input">
-            <input
-              type="number"
-              placeholder="enter speed"
-              id="js-car-speed"
-              name="maxSpeed"
-              max="550"
-              min="120"
-            />
-            km/s
-          </label>
-          <input
-            type="number"
-            max="1500"
-            min="40"
-            placeholder="enter hourse power"
-            class="input"
-            id="js-car-horsePower"
-            name="horsepower"
-          />
-          <input
-            type="text"
-            placeholder="enter geration"
-            class="input"
-            id="js-car-generation"
-            name="generation"
-          />
-          <input
-            type="text"
-            placeholder="enter car type"
-            class="input"
-            id="js-car-category"
-            name="category"
-          />
-          <input
-            type="number"
-            placeholder="enter cars doors"
-            class="input"
-            id="js-car-doorCount"
-            name="doorCount"
-          />
-          <input
-            type="number"
-            placeholder="enter accleration 0-100 ?sek"
-            class="input"
-            id="js-car-acceleration"
-            name="acceleration"
-          />
-          <input
-            type="text"
-            placeholder="fuel consumption "
-            class="input"
-            id="js-car-fuelType"
-            name="fuelType"
-          />
-          <input
-            type="text"
-            placeholder="enter car's country "
-            class="input"
-            id="js-car-country"
-            name="country"
-          />
-             <button class="btn w-full" id="submitButton">Submit✅</button>
-        </form>
-        </div>
-        </dialog>
-    <dialog id="my_modal_3" class="modal">
-      <div class="modal-box bg-orange-100">
-        <form method="dialog">
-          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" >✕</button>
-           </form>   
-      
-        <h3 class="text-lg font-bold">Enter new</h3>
-        <p class="py-4">Enter cars information!</p>
-        <form class="flex flex-col gap-y-2" id="carAddForm">
-          <!-- eski input dizaynida biz oz rang baranglik ko'pliki sababli sarvarbek ustoz tavsiyasiga binoan ozgartirildi  -->
-          <input
-            type="text"
-            placeholder="enter car name "
-            class="input"
-            id="js-car-name"
-            name="name"
-          />
-          <input
-            type="number"
-            max="2026"
-            min="1970"
-            placeholder="year of manufacture"
-            class="input"
-            id="js-car-year"
-            name="years"
-          />
-          <div class="flex gap-1">
-            <h3>Rang:</h3>
-            <input
-              type="color"
-              placeholder="enter car's color "
-              id="js-car-color"
-              name="color"
-            />
-          </div>
-          <label class="input">
-            <input
-              type="number"
-              placeholder="enter speed"
-              id="js-car-speed"
-              name="maxSpeed"
-              max="550"
-              min="120"
-            />
-            km/s
-          </label>
-          <input
-            type="number"
-            max="1500"
-            min="40"
-            placeholder="enter hourse power"
-            class="input"
-            id="js-car-horsePower"
-            name="horsepower"
-          />
-          <input
-            type="text"
-            placeholder="enter geration"
-            class="input"
-            id="js-car-generation"
-            name="generation"
-          />
-          <input
-            type="text"
-            placeholder="enter car type"
-            class="input"
-            id="js-car-category"
-            name="category"
-          />
-          <input
-            type="number"
-            placeholder="enter cars doors"
-            class="input"
-            id="js-car-doorCount"
-            name="doorCount"
-          />
-          <input
-            type="number"
-            placeholder="enter accleration 0-100 ?sek"
-            class="input"
-            id="js-car-acceleration"
-            name="acceleration"
-          />
-          <input
-            type="text"
-            placeholder="fuel consumption "
-            class="input"
-            id="js-car-fuelType"
-            name="fuelType"
-          />
-          <input
-            type="text"
-            placeholder="enter car's country "
-            class="input"
-            id="js-car-country"
-            name="country"
-          />
-          <button value="submit" class="w-full btn mt-2 hover:bg-blue-300" id="addSubmit">
-            confirm✅
-          </button>
-        </form>
-      </div>
-    </dialog>
-
-    <script src="./app.js"></script>
-    <script src="/mode.js"></script>
+    <script type="module" src="./js/mode.js"></script>
+    <script type="module" src="./js/app.js"></script>
   </body>
 </html>
