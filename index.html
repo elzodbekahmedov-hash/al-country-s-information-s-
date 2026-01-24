@@ -26,25 +26,9 @@
     <div
       class="flex w-90 mx-auto mt-10 flex-col gap-4 sm:w-140 sm:flex-row md:w-180 justify-between xl:w-240 lg:w-290"
     >
-      <label 
-        class="input w-50 :bg-gray-800 border-gray-500 sm:w-70 shadow-sm"
+      <label class=" w-50 :bg-gray-800 border-gray-500 sm:w-70 shadow-sm"
       >
-        <svg
-          class="h-[1em] opacity-50"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-        >
-          <g
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-width="2.5"
-            fill="none"
-            stroke="currentColor"
-          >
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="m21 21-4.3-4.3"></path>
-          </g>
-        </svg>
+      
         <input type="search" class="input" placeholder="Searching" list="browsers" />
       </label>
       <select class="select  ">
@@ -65,8 +49,8 @@
     <!-- Card Template -->
     <template id="templateCard">
       <div class="tooltip" data-tip="MORE👇">
-        <div class="card bg-white-200 shadow-sm w-full max-w-xs h-100 mx-auto border border-blue-500">
-          <figure><img src="" alt="Country Flag" class="w-full !h-32 object-cover"/></figure>
+        <div class="card bg-white-200 shadow-sm w-full max-w-xs h-100 mx-auto border border-gray-100">
+          <figure><img src="" alt="Country Flag" class="w-full h-50! object-cover"/></figure>
           <div class="card-body flex flex-col justify-center items-center">
             <h2 class="name font-bold text-lg"></h2>
             <div class="flex gap-1 pt-2"><span class="font-bold">Population:</span> <p class="population text-gray-400"></p></div>
